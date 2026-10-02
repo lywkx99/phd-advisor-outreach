@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="480" viewBox="0 0 1200 480" role="img" aria-labelledby="title desc">
+  <title id="title">五步主线和一条支线</title>
+  <desc id="desc">了解你、定位、导师名单、核查与写信、发出与跟进，后三步循环进行；导师给了正向回应后进入意向阶段，读懂导师的五篇论文并盯住面试和报名。</desc>
+
+  <rect width="1200" height="480" rx="28" fill="#FAF6EE"/>
+  <rect x="1" y="1" width="1198" height="478" rx="27" fill="none" stroke="#E6DECD" stroke-width="2"/>
+
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+    <text x="48" y="64" font-size="20" font-weight="800" letter-spacing="3" fill="#E4572E">五步主线 · 一条支线</text>
+
+    <g id="steps">
+      <g fill="#FFFFFF" stroke="#E6DECD" stroke-width="2">
+        <rect x="48" y="92" width="208" height="206" rx="20"/>
+        <rect x="272" y="92" width="208" height="206" rx="20"/>
+        <rect x="496" y="92" width="208" height="206" rx="20"/>
+        <rect x="720" y="92" width="208" height="206" rx="20"/>
+        <rect x="944" y="92" width="208" height="206" rx="20"/>
+      </g>
+      <g fill="#16213A">
+        <circle cx="88" cy="134" r="22"/><circle cx="312" cy="134" r="22"/><circle cx="536" cy="134" r="22"/>
+        <circle cx="760" cy="134" r="22"/><circle cx="984" cy="134" r="22"/>
+      </g>
+      <g fill="#FFD95A" font-size="24" font-weight="800" text-anchor="middle">
+        <text x="88" y="142">1</text><text x="312" y="142">2</text><text x="536" y="142">3</text>
+        <text x="760" y="142">4</text><text x="984" y="142">5</text>
+      </g>
+      <g fill="#16213A" font-size="27" font-weight="800">
+        <text x="68" y="198">了解你</text><text x="292" y="198">定位</text><text x="516" y="198">导师名单</text>
+        <text x="740" y="198">核查与写信</text><text x="964" y="198">发出与跟进</text>
+      </g>
+      <g fill="#46506A" font-size="20">
+        <text x="68" y="236">看材料、聊一聊</text><text x="68" y="266">建申请者档案</text>
+        <text x="292" y="236">把资本写足</text><text x="292" y="266">定冲、稳、保</text>
+        <text x="516" y="236">分轮筛选</text><text x="516" y="266">每轮 30 位</text>
+        <text x="740" y="236">逐位详细核查</text><text x="740" y="266">母版上改五处</text>
+        <text x="964" y="236">回信贴给它</text><text x="964" y="266">给含义和回法</text>
+      </g>
+    </g>
+
+    <g id="loop" fill="none" stroke="#1F7A6B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M1048 298 V330 H600 V308"/>
+      <path d="M591 318 L600 306 L609 318"/>
+    </g>
+    <rect x="712" y="314" width="224" height="34" rx="17" fill="#FAF6EE"/>
+    <text x="824" y="338" font-size="20" font-weight="700" fill="#1F7A6B" text-anchor="middle">看回复，再筛下一轮</text>
+
+    <g id="branch">
+      <rect x="48" y="372" width="1104" height="76" rx="22" fill="#16213A"/>
+      <text x="80" y="419" font-size="22" font-weight="800" letter-spacing="2" fill="#FFD95A">老师有意向之后</text>
+      <text x="290" y="419" font-size="22" font-weight="600" fill="#FFFFFF">读懂他的 5 篇核心论文 · 一页对课题组的理解 · 面试与报名提醒</text>
+    </g>
+  </g>
+</svg>

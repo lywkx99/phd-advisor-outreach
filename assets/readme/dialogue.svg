@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="470" viewBox="0 0 1200 470" role="img" aria-labelledby="title desc">
+  <title id="title">它会这样和你说话</title>
+  <desc id="desc">三段示范话术：问你的时候用带代价的选择题；替你做判断的时候说出来并征求意见；老师回信之后告诉你含义和回法。</desc>
+
+  <rect width="1200" height="470" rx="28" fill="#FAF6EE"/>
+  <rect x="1" y="1" width="1198" height="468" rx="27" fill="none" stroke="#E6DECD" stroke-width="2"/>
+
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif">
+    <text x="48" y="66" font-size="20" font-weight="800" letter-spacing="3" fill="#E4572E">它会这样和你说话</text>
+
+    <g id="ask">
+      <rect x="48" y="96" width="352" height="326" rx="22" fill="#FFFFFF" stroke="#1F7A6B" stroke-width="3"/>
+      <text x="74" y="142" font-size="20" font-weight="800" letter-spacing="2" fill="#1F7A6B">问你的时候</text>
+      <g font-size="23" font-weight="600" fill="#16213A">
+        <text x="74" y="190">“985 的普通课题组，</text>
+        <text x="74" y="226">和双非但方向对口、导师</text>
+        <text x="74" y="262">亲自带的强组，你选哪个？</text>
+        <text x="74" y="298">前者牌子好，后者更可能</text>
+        <text x="74" y="334">出一作。”</text>
+      </g>
+      <text x="74" y="388" font-size="19" fill="#7A8194">不问抽象偏好，问带代价的选择</text>
+    </g>
+
+    <g id="decide">
+      <rect x="424" y="96" width="352" height="326" rx="22" fill="#16213A"/>
+      <text x="450" y="142" font-size="20" font-weight="800" letter-spacing="2" fill="#FFD95A">替你做判断的时候</text>
+      <g font-size="23" font-weight="600" fill="#FFFFFF">
+        <text x="450" y="190">“这项技能我先写上了，</text>
+        <text x="450" y="226">面试前我带你把原理</text>
+        <text x="450" y="262">过一遍，可以吗？”</text>
+      </g>
+      <text x="450" y="352" font-size="19" fill="#AEB7CE">每个判断都说出来，由你定</text>
+      <text x="450" y="388" font-size="19" fill="#AEB7CE">写上去的，面试前帮你补上</text>
+    </g>
+
+    <g id="reply">
+      <rect x="800" y="96" width="352" height="326" rx="22" fill="#FFFFFF" stroke="#E6DECD" stroke-width="2"/>
+      <text x="826" y="142" font-size="20" font-weight="800" letter-spacing="2" fill="#E4572E">老师回信之后</text>
+      <g font-size="23" font-weight="600" fill="#16213A">
+        <text x="826" y="190">“只说‘欢迎报考’，多半</text>
+        <text x="826" y="226">是礼貌，还没有承诺。</text>
+        <text x="826" y="262">我们回一封，问清今年</text>
+        <text x="826" y="298">有没有名额，再争取一次</text>
+        <text x="826" y="334">线上交流。”</text>
+      </g>
+      <text x="826" y="388" font-size="19" fill="#7A8194">回信贴给它，给含义和回法</text>
+    </g>
+  </g>
+</svg>

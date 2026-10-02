@@ -1,0 +1,4 @@
+interface:
+  display_name: "申博：从了解自己到和导师坐下来谈"
+  short_description: "申博专家陪跑：访谈建档、方向提炼与定位、分轮筛导师、深查、定制邮件、回信应对、意向导师的论文与报名节点"
+  default_prompt: "使用 $phd-advisor-outreach。先找我的申请者档案；没有就通过引导式访谈了解我的资本和意愿，再帮我定位、筛选导师或起草邮件。不要发送邮件。"

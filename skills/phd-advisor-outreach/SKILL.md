@@ -64,7 +64,7 @@ metadata:
 
 ## 范围
 
-做：访谈建档、方向提炼、资本评估与定位、分轮筛选导师、单个导师深查、邮件母版和每封邮件、回信的解读和回复、意向导师的论文推荐和陪读、报名节点的查询和提醒。
+做：访谈建档、方向提炼、资本评估与定位、分轮筛选导师、单个导师深查、邮件母版和每封邮件、附件的文字稿、回信的解读和回复、一批发出后的复盘、意向导师的论文推荐和陪读、面试前的补课、报名节点的查询、待办和日历提醒。
 
 不做：面试汇报的 PPT 制作；代填报名系统；没有用户明确授权时发送邮件。海外申请和人文社科的评判标准不同，本 skill 的档位和现实描述不适用，遇到时如实告诉用户。
 
@@ -116,10 +116,11 @@ metadata:
 | 我这个条件能申到什么水平、够不够格 | [资本评估](references/capital-assessment.md)；需要讲现实时读 [权衡与现实](references/tradeoffs.md) |
 | 纠结选哪个、要不要转方向、去不去某地 | [权衡与现实](references/tradeoffs.md)；[专家身份](references/expert-stance.md) 里的“理清取舍” |
 | 找一批导师、核实导师表 | 闸门 A；[筛选方法](references/scouting.md)：先请用户选这一轮的口径，再筛 30 位，按固定表头出表；[契合度分析](references/fit-analysis.md)；[查重与核实](references/verification.md) |
-| 帮我设计邮件模板、我的邮件该怎么写 | [邮件模型](references/email-model.md)；[示例](assets/examples/email-master-example.md) |
+| 帮我设计邮件模板、我的邮件该怎么写、帮我看看我现在这封邮件 | [邮件模型](references/email-model.md)：没有邮件就设计母版，已有邮件先体检；[示例](assets/examples/email-master-example.md) |
+| 发了很多都没人回、回复很少怎么办 | [回信应对](references/reply-playbook.md) 的“一批发出之后的复盘” |
 | 从名单里选了一批，或给了导师主页，要写邮件 | 闸门 B；没有母版先做母版；按 [流程地图](references/workflow.md) 第 4 步做单个导师深查并留核查记录；再按 [邮件模型](references/email-model.md) 的五处定制和 [邮件写法](references/email-writing.md) 写 |
 | 导师回信了、没回信要跟进、要加微信、交流后要致谢 | [回信应对](references/reply-playbook.md)：请用户贴回信原文，归类、解释含义、记账、按模板起草回复、给下一步 |
-| 某位意向导师主要做什么、该读他哪些论文、要面试了、什么时候报名 | [意向阶段](references/intent-stage.md)。回信约了交流时不等用户开口就启动 |
+| 某位意向导师主要做什么、该读他哪些论文、要面试了、什么时候报名 | [意向阶段](references/intent-stage.md)。回信约了交流时不等用户开口就启动。面试前按 [资本评估](references/capital-assessment.md) 的“补课清单”带他补 |
 | 邮件发了、接下来干什么、然后呢 | [流程地图](references/workflow.md) |
 | 只改一句、解释某个判断 | 只处理指定范围，复用仍然有效的核查 |
 | 明确要求实际发送 | [查重与核实](references/verification.md) 的“实际发送”。写稿、给链接都不算授权发送 |
@@ -143,7 +144,7 @@ metadata:
 2. **下一步**：现在到哪了、你推荐的下一步、需要他做什么、还有什么别的选择。
 3. **风险提醒**：有才说，一条，两三句。
 
-只改一句话这类小任务不需要。交付之后把新的事实和状态写回档案和对应的表，更新“当前进度”。
+只改一句话这类小任务不需要。交付之后把新的事实和状态写回档案和对应的表，更新“当前进度”和给用户看的 `待办与日程.md`；有带日期的事项就生成日历提醒，因为你没法主动找他。
 
 ## 术语
 
@@ -165,8 +166,8 @@ metadata:
 ## 资源
 
 - `references/`：十四份参考文件，分层见上面的架构表。
-- `assets/workspace-readme.md`：放进用户文件夹的使用说明。
+- `assets/workspace-readme.md`、`todo-template.md`：放进用户文件夹的使用说明、待办与日程。
 - `assets/profile-template.md`、`ledger-template.md`、`advisor-table-template.csv`、`intent-table-template.xlsx`（另有同表头的 `.csv`）：档案、联系账本、名单表、意向导师表的空白模板。
 - `assets/email-skeleton.md`：邮件骨架，也是母版的模板。`assets/examples/email-master-example.md`：一份母版和它改给两位导师的示例。
 - `assets/advisor-check-template.md`、`core-papers-template.md`：单个导师核查记录、核心论文五篇的模板。
-- `scripts/init_workspace.py` 建工作文件夹；`check_profile.py` 看档案过了哪道闸门；`check_duplicates.py` 只读查重；`validate_skill.py` 检查本 skill 自身的文件和链接是否完整。都只用 Python 标准库，都是可选的辅助。
+- `scripts/init_workspace.py` 建工作文件夹；`check_profile.py` 看档案过了哪道闸门；`check_duplicates.py` 只读查重；`make_reminders.py` 把面试、报名、跟进的日期做成日历文件；`validate_skill.py` 检查本 skill 自身的文件和链接是否完整。都只用 Python 标准库，都是可选的辅助。

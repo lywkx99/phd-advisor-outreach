@@ -20,12 +20,14 @@ REQUIRED = [
     "references/scouting.md", "references/fit-analysis.md", "references/verification.md",
     "references/email-model.md", "references/email-writing.md",
     "references/reply-playbook.md", "references/intent-stage.md",
-    "assets/workspace-readme.md", "assets/profile-template.md", "assets/ledger-template.md",
+    "assets/workspace-readme.md", "assets/todo-template.md",
+    "assets/profile-template.md", "assets/ledger-template.md",
     "assets/advisor-table-template.csv", "assets/advisor-check-template.md",
     "assets/intent-table-template.xlsx", "assets/intent-table-template.csv",
     "assets/email-skeleton.md", "assets/core-papers-template.md",
     "assets/examples/email-master-example.md",
     "scripts/init_workspace.py", "scripts/check_profile.py", "scripts/check_duplicates.py",
+    "scripts/make_reminders.py",
 ]
 LINK = re.compile(r"\[([^\]]+)\]\(([^)#]+)\)")
 SECTION_REF = re.compile(r"\]\(([^)#]+\.md)\)\s*(?:里的|的)?\s*“([^”]+)”")

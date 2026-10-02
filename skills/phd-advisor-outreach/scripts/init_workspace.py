@@ -29,6 +29,7 @@ FOLDERS = [
 ]
 STARTERS = [
     ("assets/workspace-readme.md", "使用说明.md"),
+    ("assets/todo-template.md", "待办与日程.md"),
     ("assets/profile-template.md", "02_档案/申请者档案.md"),
     ("assets/ledger-template.md", "02_档案/联系账本.md"),
     ("assets/intent-table-template.xlsx", "05_意向导师/意向导师表.xlsx"),

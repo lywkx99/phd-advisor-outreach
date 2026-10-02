@@ -4,7 +4,8 @@
 Verifies: required files exist; Markdown links resolve; a quoted section name
 after a link exists as a heading in the target file; the workspace folders in
 init_workspace.py are documented; gate fields, status words and table columns
-defined in templates are the same ones the reference files describe.
+defined in templates are the same ones the reference files describe; the sample
+opening message stays within its length limit.
 """
 import csv
 import re
@@ -32,6 +33,7 @@ REQUIRED = [
 LINK = re.compile(r"\[([^\]]+)\]\(([^)#]+)\)")
 SECTION_REF = re.compile(r"\]\(([^)#]+\.md)\)\s*(?:里的|的)?\s*“([^”]+)”")
 GATE = re.compile(r"^\s*[-*]\s*〔([AB])〕\s*([^:：]+)[:：]", re.M)
+OPENING_LIMIT = 700
 
 
 def read(rel):
@@ -93,10 +95,28 @@ def main():
     # Ledger status words must be the ones the workflow defines.
     workflow = read("references/workflow.md")
     ledger = read("assets/ledger-template.md")
-    status_line = next((l for l in ledger.splitlines() if "状态只往前追加" in l), "")
-    for word in re.findall(r"`([^`]+)`", status_line):
+    status_line = next((l for l in ledger.splitlines() if "状态用这几个词" in l), "")
+    words = re.findall(r"`([^`]+)`", status_line)
+    if not words:
+        errors.append("联系账本模板里没有找到状态词的说明行")
+    for word in words:
         if word not in workflow:
             errors.append(f"联系账本的状态词“{word}”不在 workflow.md 的状态表里")
+
+    # The sample opening message must stay within the length the workflow promises:
+    # it is the first thing a new user reads, and it grows a little with every edit.
+    quote, started = [], False
+    for line in workflow[workflow.find("### 要做到的五件事"):].splitlines():
+        if line.startswith(">"):
+            started = True
+            quote.append(line)
+        elif started:
+            break
+    opening = len(re.sub(r"\s|[>*`|-]", "", "".join(quote)))
+    if not quote:
+        errors.append("workflow.md 的“开场”里没有找到示范话术")
+    elif opening > OPENING_LIMIT:
+        errors.append(f"开场示范话术有 {opening} 字，超过了 {OPENING_LIMIT} 字的上限")
 
     # Table headers must be described where the docs say they are.
     scouting = read("references/scouting.md")
@@ -120,7 +140,7 @@ def main():
         return 1
     print(f"通过：{len(REQUIRED)} 个必需文件齐全，{len(md_files)} 个 Markdown 文件的链接和章节引用有效，"
           f"{len(tops)} 个工作文件夹、{len(GATE.findall(template))} 个闸门字段、"
-          f"{len(columns)} 列名单表、{len(intent_cols)} 列意向表与说明一致")
+          f"{len(columns)} 列名单表、{len(intent_cols)} 列意向表与说明一致；开场示范 {opening} 字")
     return 0
 
 

@@ -27,11 +27,14 @@ FOLDERS = [
     "06_院校报名",
     "07_临时文件",
 ]
+PROFILE = "02_档案/申请者档案.md"
+LEDGER = "02_档案/联系账本.md"
+LEDGER_FIELD = "〔A〕联系账本："
 STARTERS = [
     ("assets/workspace-readme.md", "使用说明.md"),
     ("assets/todo-template.md", "待办与日程.md"),
-    ("assets/profile-template.md", "02_档案/申请者档案.md"),
-    ("assets/ledger-template.md", "02_档案/联系账本.md"),
+    ("assets/profile-template.md", PROFILE),
+    ("assets/ledger-template.md", LEDGER),
     ("assets/intent-table-template.xlsx", "05_意向导师/意向导师表.xlsx"),
 ]
 
@@ -88,6 +91,16 @@ def main():
         else:
             shutil.copyfile(SKILL / source, target)
             created.append(name)
+
+    # A freshly copied profile still says the ledger is missing, although the
+    # ledger was created alongside it. Point the profile at it so gate A does
+    # not report a gap the user never had. Existing profiles are left alone.
+    if PROFILE in created and (root / LEDGER).is_file():
+        profile = root / PROFILE
+        text = profile.read_text(encoding="utf-8")
+        filled = text.replace(LEDGER_FIELD + "【待补】", LEDGER_FIELD + LEDGER, 1)
+        if filled != text:
+            profile.write_text(filled, encoding="utf-8")
 
     print(f"工作文件夹：{root}")
     print("状态：" + ("原来就有，只补了缺少的部分" if existed else "新建"))

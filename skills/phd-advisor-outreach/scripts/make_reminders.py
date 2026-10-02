@@ -72,11 +72,16 @@ def main():
         print(exc)
         return 2
 
-    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    now = datetime.now(timezone.utc)
+    stamp = now.strftime("%Y%m%dT%H%M%SZ")
+    sequence = int(now.timestamp() // 60)  # rises with every regeneration
     lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//phd-advisor-outreach//reminders//CN", "CALSCALE:GREGORIAN"]
     for when, timed, title, note in sorted(events, key=lambda e: e[0]):
-        uid = hashlib.sha1(f"{when.isoformat()}|{title}".encode("utf-8")).hexdigest()[:20]
-        lines += ["BEGIN:VEVENT", f"UID:{uid}@phd-advisor-outreach", f"DTSTAMP:{stamp}"]
+        # Same title keeps the same UID, so re-importing after a date change updates
+        # the existing entry in calendars that honour UID instead of adding a duplicate.
+        uid = hashlib.sha1(title.encode("utf-8")).hexdigest()[:20]
+        lines += ["BEGIN:VEVENT", f"UID:{uid}@phd-advisor-outreach", f"DTSTAMP:{stamp}",
+                  f"SEQUENCE:{sequence}"]
         if timed:
             # Floating local time: calendar apps read it in the user's own time zone.
             lines += [f"DTSTART:{when.strftime('%Y%m%dT%H%M%S')}",
@@ -101,7 +106,7 @@ def main():
     print(f"已写入 {out}，共 {len(events)} 条提醒：")
     for when, timed, title, _ in sorted(events, key=lambda e: e[0]):
         print("  " + when.strftime("%Y-%m-%d %H:%M" if timed else "%Y-%m-%d") + "  " + title)
-    print("把这个文件发到手机上点开，或在电脑上双击，就能导入日历。")
+    print("导入手机日历的步骤见 references/operation.md；第一次要带用户导一遍并确认成功。")
     return 0
 
 

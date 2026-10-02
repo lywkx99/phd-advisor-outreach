@@ -8,8 +8,10 @@ defined in templates are the same ones the reference files describe; the sample
 opening message stays within its length limit.
 """
 import csv
+import html
 import re
 import sys
+import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -133,6 +135,24 @@ def main():
     for col in intent_cols:
         if col not in operation:
             errors.append(f"意向导师表的列“{col}”在 operation.md 里没有说明")
+
+    # The xlsx template must carry the same columns as the csv, and the words in
+    # its status dropdowns must be the ones the workflow uses.
+    # Cell text may sit in a shared-strings part or inline in the sheet, depending on the writer.
+    with zipfile.ZipFile(ROOT / "assets/intent-table-template.xlsx") as book:
+        xml = "".join(book.read(n).decode("utf-8") for n in book.namelist()
+                      if n.startswith("xl/") and n.endswith(".xml"))
+    strings = {html.unescape(s) for s in re.findall(r"<t(?:\s[^>]*)?>([^<]*)</t>", xml)}
+    for col in intent_cols:
+        if col not in strings:
+            errors.append(f"意向导师表的 xlsx 里没有“{col}”这一列，和 csv 不一致")
+    for formula in re.findall(r"<formula1>([^<]*)</formula1>", xml):
+        choices = html.unescape(formula).strip('"').split(",")
+        if "首选" in choices:  # the applicant's own ranking is not a status
+            continue
+        for word in choices:
+            if word not in workflow:
+                errors.append(f"意向导师表下拉里的“{word}”不在 workflow.md 的状态表里")
 
     if errors:
         print("发现问题：")
